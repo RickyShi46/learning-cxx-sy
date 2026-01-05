@@ -5,9 +5,20 @@
 struct Fibonacci {
     int numbers[11];
     // TODO: 修改方法签名和实现，使测试通过
-    int get(int i) {
+    //重要规则: constexpr 对象只能调用 const 成员函数
+    int get(int i) const {
+        return numbers[i];
     }
 };
+// ✅ const 成员函数
+    // this 指针类型: const Fibonacci*
+    // 不能修改成员变量
+    //可以在 const 和非 const 对象上调用
+//2. 非const 成员函数特点
+// 没有 const 限定符
+// this 指针类型为 T*
+// 可以修改成员变量
+// 只能在非 const 对象上
 
 int main(int argc, char **argv) {
     Fibonacci constexpr FIB{{0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55}};
